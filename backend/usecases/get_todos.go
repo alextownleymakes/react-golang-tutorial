@@ -2,6 +2,12 @@ package usecases
 
 import "github.com/alextownleymakes/react-golang-tutorial/backend/entities"
 
-func GetTodos(TodosRepository) ([]entities.Todo, error) {
-	return nil, ErrInternal
+func GetTodos(repo TodosRepository) ([]entities.Todo, error) {
+	todos, err := repo.GetAllTodos()
+
+	if err != nil {
+		return nil, ErrInternal
+	}
+
+	return todos, nil
 }
